@@ -1,3 +1,11 @@
 2.1 Ensure network traffic is restricted between containers on the default bridge (Scored)
 Remediation:
 Add '"icc": false' in Docker daemon configuration file '/etc/docker/daemon.json'
+
+2.14.a Ensure Userland Proxy is Disabled
+Remediation:
+Add "--userland-proxy=false" in dockerd run
+
+ 2.17.b Ensure containers are restricted from acquiring new privileges
+ Remediation:
+ Add "--no-new-privileges=true" in dockerd run

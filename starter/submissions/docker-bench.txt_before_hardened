@@ -40,14 +40,18 @@
 [PASS] 2.1 Ensure network traffic is restricted between containers on the default bridge (Scored)
 [PASS] 2.2.a Ensure the logging level is set to 'info' (Scored)
 [FAIL] 2.2.b Ensure the logging level is set to 'info' (Scored)
+	 grep: /etc/docker/daemon.json: No such file or directory
+	 
 [PASS] 2.3 Ensure Docker is allowed to make changes to iptables (Scored)
 [WARN] 2.4 Ensure insecure registries are not used (Scored)
 [PASS] 2.5 Ensure aufs storage driver is not used (Scored)
 [FAIL] 2.6.a Ensure TLS authentication for Docker daemon is configured (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8543    8541  0 21:57 pts/0    00:00:00 grep dockerd
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21858   21856  0 14:29 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.6.b Ensure TLS authentication for Docker daemon is configured (Scored)
+	 grep: /etc/docker/daemon.json: No such file or directory
+	 
 [WARN] 2.7 Ensure the default ulimit is configured appropriately (Not Scored)
 [FAIL] 2.8 Enable user namespace support (Scored)
 	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/info": dial unix /var/run/docker.sock: connect: permission denied
@@ -58,28 +62,40 @@
 [PASS] 2.10.a Ensure base device size is not changed until needed (Scored)
 [PASS] 2.10.b Ensure base device size is not changed until needed (Scored)
 [FAIL] 2.11.a Ensure that authorization for Docker client commands is enabled (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8582    8580  0 21:57 pts/0    00:00:00 grep dockerd
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21896   21894  0 14:29 pts/0    00:00:00 grep dockerd
 	 
 [PASS] 2.11.b Ensure that authorization for Docker client commands is enabled (Scored)
 [FAIL] 2.12 Ensure centralized and remote logging is configured (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8588    8586  0 21:57 pts/0    00:00:00 grep dockerd
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21902   21900  0 14:29 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.a Ensure live restore is Enabled (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8591    8589  0 21:57 pts/0    00:00:00 grep dockerd
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21905   21903  0 14:29 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.b Ensure live restore is Enabled (Scored)
-[PASS] 2.14.a Ensure Userland Proxy is Disabled (Scored)
+	 grep: /etc/docker/daemon.json: No such file or directory
+	 
+[FAIL] 2.14.a Ensure Userland Proxy is Disabled (Scored)
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21911   21909  0 14:29 pts/0    00:00:00 grep dockerd
+	 
 [FAIL] 2.14.b Disable Userland Proxy (Scored)
+	 grep: /etc/docker/daemon.json: No such file or directory
+	 
 [PASS] 2.15 Ensure that a daemon-wide custom seccomp profile is applied if appropriate (Not Scored)
 [FAIL] 2.16 Ensure that experimental features are not implemented in production (Scored)
 	 
 	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
 	 
-[PASS] 2.17.a Ensure containers are restricted from acquiring new privileges (Scored)
+[FAIL] 2.17.a Ensure containers are restricted from acquiring new privileges (Scored)
+	 root       21585       1  5 14:29 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      21945   21943  0 14:29 pts/0    00:00:00 grep dockerd
+	 
 [FAIL] 2.17.b Ensure containers are restricted from acquiring new privileges (Scored)
+	 grep: /etc/docker/daemon.json: No such file or directory
+	 
 [INFO] 3 Docker daemon configuration files
 [PASS] 3.1 Ensure that docker.service file ownership is set to root:root (Scored)
 [PASS] 3.2 Ensure that docker.service file permissions are appropriately set (Scored)
@@ -101,8 +117,8 @@
 [WARN] 3.14 Ensure that the Docker server certificate key file permissions are set to 400 (Scored)
 [PASS] 3.15 Ensure that Docker socket file ownership is set to root:docker (Scored)
 [PASS] 3.16 Ensure that Docker socket file permissions are set to 660 or more restrictive (Scored)
-[PASS] 3.17 Ensure that daemon.json file ownership is set to root:root (Scored)
-[PASS] 3.18 Ensure that daemon.json file permissions are set to 644 or more restrictive (Scored)
+[FAIL] 3.17 Ensure that daemon.json file ownership is set to root:root (Scored)
+[FAIL] 3.18 Ensure that daemon.json file permissions are set to 644 or more restrictive (Scored)
 [PASS] 3.19 Ensure that /etc/default/docker file ownership is set to root:root (Scored)
 [FAIL] 3.20 Ensure that the /etc/sysconfig/docker file ownership is set to root:root (Scored)
 [FAIL] 3.21 Ensure that /etc/sysconfig/docker file permissions are set to 644 or more restrictive (Scored)
@@ -269,10 +285,7 @@ Additionally, you should not create a mapping of sensitive directories from the 
 
 1.2.12 /bin/sh: 1: auditctl: not found
 
-2.2.b Ensure that the Docker daemon configuration file has the following configuration included
-"log-level": "info"
-Alternatively, run the Docker daemon as below:
-dockerd --log-level="info"
+2.2.b grep: /etc/docker/daemon.json: No such file or directory
 
 2.4 You should ensure that no insecure registries are in use.
 
@@ -313,11 +326,17 @@ dockerd --live-restore
 For Example,
 dockerd --live-restore
 
+2.14.a You should run the Docker daemon as below:
+dockerd --userland-proxy=false
+
 2.14.b You should run the Docker daemon as below:
 dockerd --userland-proxy=false
 
 2.16 
 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+
+2.17.a You should run the Docker daemon as below:
+dockerd --no-new-privileges
 
 2.17.b For example, you should start your container as below:
 docker run --rm -it --security-opt=no-new-privileges ubuntu bash
@@ -351,6 +370,14 @@ key file to root.
 3.14 You should execute the following command:
 chmod 400 <path to Docker server certificate key file>
 This sets the Docker server certificate key file permissions to 400 .
+
+3.17 You should execute the command below:
+chown root:root /etc/docker/daemon.json
+This sets the ownership and group-ownership for the file to root .
+
+3.18 You should execute the command below
+chmod 644 /etc/docker/daemon.json
+This sets the file permissions for this file to 644.
 
 3.20 You should execute the following command
 chown root:root /etc/sysconfig/docker
@@ -674,7 +701,7 @@ application/json" -H "content-type: application/json" -d "{
 
 
 == Summary ==
-35 checks PASS
-36 checks FAIL
+31 checks PASS
+40 checks FAIL
 42 checks WARN
 10 checks INFO

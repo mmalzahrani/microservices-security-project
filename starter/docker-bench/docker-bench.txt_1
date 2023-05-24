@@ -37,65 +37,55 @@
 	 /bin/sh: 1: auditctl: not found
 	 
 [INFO] 2 Docker daemon configuration
-[FAIL] 2.1 Ensure network traffic is restricted between containers on the default bridge (Scored)
-	 bridge: map[com.docker.network.bridge.default_bridge:true com.docker.network.bridge.enable_icc:true com.docker.network.bridge.enable_ip_masquerade:true com.docker.network.bridge.host_binding_ipv4:0.0.0.0 com.docker.network.bridge.name:docker0 com.docker.network.driver.mtu:1500]
-	 host: map[]
-	 none: map[]
-	 
+[PASS] 2.1 Ensure network traffic is restricted between containers on the default bridge (Scored)
 [PASS] 2.2.a Ensure the logging level is set to 'info' (Scored)
 [FAIL] 2.2.b Ensure the logging level is set to 'info' (Scored)
-	 grep: /etc/docker/daemon.json: No such file or directory
-	 
 [PASS] 2.3 Ensure Docker is allowed to make changes to iptables (Scored)
 [WARN] 2.4 Ensure insecure registries are not used (Scored)
 [PASS] 2.5 Ensure aufs storage driver is not used (Scored)
 [FAIL] 2.6.a Ensure TLS authentication for Docker daemon is configured (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111191  111189  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24481   24479  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.6.b Ensure TLS authentication for Docker daemon is configured (Scored)
-	 grep: /etc/docker/daemon.json: No such file or directory
-	 
 [WARN] 2.7 Ensure the default ulimit is configured appropriately (Not Scored)
 [FAIL] 2.8 Enable user namespace support (Scored)
-	 [name=apparmor name=seccomp,profile=builtin]
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/info": dial unix /var/run/docker.sock: connect: permission denied
+	 []
 	 
 [PASS] 2.9.a Ensure the default cgroup usage has been confirmed (Scored)
 [PASS] 2.9.b Ensure the default cgroup usage has been confirmed (Scored)
 [PASS] 2.10.a Ensure base device size is not changed until needed (Scored)
 [PASS] 2.10.b Ensure base device size is not changed until needed (Scored)
 [FAIL] 2.11.a Ensure that authorization for Docker client commands is enabled (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111244  111242  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24519   24517  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [PASS] 2.11.b Ensure that authorization for Docker client commands is enabled (Scored)
 [FAIL] 2.12 Ensure centralized and remote logging is configured (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111250  111248  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24525   24523  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.a Ensure live restore is Enabled (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111253  111251  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24528   24526  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.b Ensure live restore is Enabled (Scored)
-	 grep: /etc/docker/daemon.json: No such file or directory
-	 
 [FAIL] 2.14.a Ensure Userland Proxy is Disabled (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111259  111257  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24534   24532  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.14.b Disable Userland Proxy (Scored)
-	 grep: /etc/docker/daemon.json: No such file or directory
-	 
 [PASS] 2.15 Ensure that a daemon-wide custom seccomp profile is applied if appropriate (Not Scored)
-[PASS] 2.16 Ensure that experimental features are not implemented in production (Scored)
+[FAIL] 2.16 Ensure that experimental features are not implemented in production (Scored)
+	 
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+	 
 [FAIL] 2.17.a Ensure containers are restricted from acquiring new privileges (Scored)
-	 root      110121       1  3 01:25 ?        00:00:06 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
-	 think     111314  111312  0 01:27 pts/0    00:00:00 grep dockerd
+	 root       24210       1 10 14:35 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+	 think      24570   24568  0 14:35 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.17.b Ensure containers are restricted from acquiring new privileges (Scored)
-	 grep: /etc/docker/daemon.json: No such file or directory
-	 
 [INFO] 3 Docker daemon configuration files
 [PASS] 3.1 Ensure that docker.service file ownership is set to root:root (Scored)
 [PASS] 3.2 Ensure that docker.service file permissions are appropriately set (Scored)
@@ -117,14 +107,16 @@
 [WARN] 3.14 Ensure that the Docker server certificate key file permissions are set to 400 (Scored)
 [PASS] 3.15 Ensure that Docker socket file ownership is set to root:docker (Scored)
 [PASS] 3.16 Ensure that Docker socket file permissions are set to 660 or more restrictive (Scored)
-[FAIL] 3.17 Ensure that daemon.json file ownership is set to root:root (Scored)
-[FAIL] 3.18 Ensure that daemon.json file permissions are set to 644 or more restrictive (Scored)
+[PASS] 3.17 Ensure that daemon.json file ownership is set to root:root (Scored)
+[PASS] 3.18 Ensure that daemon.json file permissions are set to 644 or more restrictive (Scored)
 [PASS] 3.19 Ensure that /etc/default/docker file ownership is set to root:root (Scored)
 [FAIL] 3.20 Ensure that the /etc/sysconfig/docker file ownership is set to root:root (Scored)
 [FAIL] 3.21 Ensure that /etc/sysconfig/docker file permissions are set to 644 or more restrictive (Scored)
 [PASS] 3.22 Ensure that /etc/default/docker file permissions are set to 644 or more restrictive (Scored)
 [INFO] 4 Container Images and Build File Configuration
 [FAIL] 4.1 Ensure that a user for the container has been created (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+	 
 [WARN] 4.2 Ensure that containers use only trusted base images (Not Scored)
 [WARN] 4.3 Ensure that unnecessary packages are not installed in the container (Not Scored)
 [WARN] 4.4 Ensure images are scanned and rebuilt to include security patches (Not Scored)
@@ -148,6 +140,7 @@
 [WARN] 5.8 Ensure that only needed ports are open on the container (Not Scored)
 [PASS] 5.9 Ensure that the host's network namespace is not shared (Scored)
 [FAIL] 5.10 Ensure that the memory usage for container is limited (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 	 "docker inspect" requires at least 1 argument.
 	 See 'docker inspect --help'.
 	 
@@ -156,6 +149,7 @@
 	 Return low-level information on Docker objects
 	 
 [FAIL] 5.11 Ensure that CPU priority is set appropriately on container (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 	 "docker inspect" requires at least 1 argument.
 	 See 'docker inspect --help'.
 	 
@@ -166,6 +160,7 @@
 [PASS] 5.12 Ensure that the container's root filesystem is mounted as read only (Scored)
 [PASS] 5.13 Ensure that incoming container traffic is bound to a specific host interface (Scored)
 [FAIL] 5.14 Ensure that the 'on-failure' container restart policy is set to '5' (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 	 "docker inspect" requires at least 1 argument.
 	 See 'docker inspect --help'.
 	 
@@ -188,6 +183,7 @@
 	 
 [WARN] 5.24 Ensure cgroup usage is confirmed (Scored)
 [FAIL] 5.25 Ensure that the container is restricted from acquiring additional privileges (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 	 "docker inspect" requires at least 1 argument.
 	 See 'docker inspect --help'.
 	 
@@ -198,6 +194,7 @@
 [WARN] 5.26 Ensure that container health is checked at runtime (Scored)
 [WARN] 5.27 Ensure that Docker commands always make use of the latest version of their image (Not Scored)
 [FAIL] 5.28 Ensure that the PIDs cgroup limit is used (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
 	 "docker inspect" requires at least 1 argument.
 	 See 'docker inspect --help'.
 	 
@@ -205,9 +202,17 @@
 	 
 	 Return low-level information on Docker objects
 	 
-[WARN] 5.29 Ensure that Docker's default bridge docker0 is not used (Not Scored)
+[PASS] 5.29 Ensure that Docker's default bridge docker0 is not used (Not Scored)
 [PASS] 5.30 Ensure that the host's user namespaces is not shared (Scored)
-[PASS] 5.31 Ensure that the Docker socket is not mounted inside any containers (Scored)
+[FAIL] 5.31 Ensure that the Docker socket is not mounted inside any containers (Scored)
+	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+	 "docker inspect" requires at least 1 argument.
+	 See 'docker inspect --help'.
+	 
+	 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+	 
+	 Return low-level information on Docker objects
+	 
 [INFO] 6 Docker Security Operations
 [WARN] 6.1 Ensure that image sprawl is avoided (Not Scored)
 [WARN] 6.2 Ensure that container sprawl is avoided (Not Scored)
@@ -270,14 +275,10 @@ Additionally, you should not create a mapping of sensitive directories from the 
 
 1.2.12 /bin/sh: 1: auditctl: not found
 
-2.1 Edit the Docker daemon configuration file to ensure that icc is disabled. It should include
-the following setting
-"icc": false
-Alernatively, run the docker daemon directly and pass --icc=false as an argument. 
-For Example, 
-dockerd --icc=false
-
-2.2.b grep: /etc/docker/daemon.json: No such file or directory
+2.2.b Ensure that the Docker daemon configuration file has the following configuration included
+"log-level": "info"
+Alternatively, run the Docker daemon as below:
+dockerd --log-level="info"
 
 2.4 You should ensure that no insecure registries are in use.
 
@@ -324,6 +325,9 @@ dockerd --userland-proxy=false
 2.14.b You should run the Docker daemon as below:
 dockerd --userland-proxy=false
 
+2.16 
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+
 2.17.a You should run the Docker daemon as below:
 dockerd --no-new-privileges
 
@@ -359,14 +363,6 @@ key file to root.
 3.14 You should execute the following command:
 chmod 400 <path to Docker server certificate key file>
 This sets the Docker server certificate key file permissions to 400 .
-
-3.17 You should execute the command below:
-chown root:root /etc/docker/daemon.json
-This sets the ownership and group-ownership for the file to root .
-
-3.18 You should execute the command below
-chmod 644 /etc/docker/daemon.json
-This sets the file permissions for this file to 644.
 
 3.20 You should execute the following command
 chown root:root /etc/sysconfig/docker
@@ -485,21 +481,24 @@ For example,
 docker run --interactive --tty --publish 5000 --publish 5001 --publish 5002
 centos /bin/bash
 
-5.10 "docker inspect" requires at least 1 argument.
+5.10 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
 See 'docker inspect --help'.
 
 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
 
 Return low-level information on Docker objects
 
-5.11 "docker inspect" requires at least 1 argument.
+5.11 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
 See 'docker inspect --help'.
 
 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
 
 Return low-level information on Docker objects
 
-5.14 "docker inspect" requires at least 1 argument.
+5.14 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
 See 'docker inspect --help'.
 
 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
@@ -532,7 +531,8 @@ docker run <Run arguments> --volume=/hostPath:/containerPath:shared
 5.24 You should not use the --cgroup-parent option within the docker run command unless 
 strictly required.
 
-5.25 "docker inspect" requires at least 1 argument.
+5.25 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
 See 'docker inspect --help'.
 
 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
@@ -548,15 +548,21 @@ default is still vulnerable to caching attacks) to avoid extracting cached older
 Version pinning mechanisms should be used for base images, packages, and entire images.
 You can customize version pinning rules according to your requirements.
 
-5.28 "docker inspect" requires at least 1 argument.
+5.28 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
 See 'docker inspect --help'.
 
 Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
 
 Return low-level information on Docker objects
 
-5.29 You should follow the Docker documentation and set up a user-defined network. All the
-containers should be run in this network.
+5.31 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json?all=1": dial unix /var/run/docker.sock: connect: permission denied
+"docker inspect" requires at least 1 argument.
+See 'docker inspect --help'.
+
+Usage:  docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+
+Return low-level information on Docker objects
 
 6.1 You should keep only the images that you actually need and establish a workflow to
 remove old or stale images from the host. Additionally, you should use features such as
@@ -680,7 +686,7 @@ application/json" -H "content-type: application/json" -d "{
 
 
 == Summary ==
-31 checks PASS
-39 checks FAIL
-43 checks WARN
+33 checks PASS
+38 checks FAIL
+42 checks WARN
 10 checks INFO

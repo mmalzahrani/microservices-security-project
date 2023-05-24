@@ -44,8 +44,8 @@
 [WARN] 2.4 Ensure insecure registries are not used (Scored)
 [PASS] 2.5 Ensure aufs storage driver is not used (Scored)
 [FAIL] 2.6.a Ensure TLS authentication for Docker daemon is configured (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8543    8541  0 21:57 pts/0    00:00:00 grep dockerd
+	 root        5830       1  0 21:44 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false
+	 think       6387    6385  0 21:46 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.6.b Ensure TLS authentication for Docker daemon is configured (Scored)
 [WARN] 2.7 Ensure the default ulimit is configured appropriately (Not Scored)
@@ -58,17 +58,17 @@
 [PASS] 2.10.a Ensure base device size is not changed until needed (Scored)
 [PASS] 2.10.b Ensure base device size is not changed until needed (Scored)
 [FAIL] 2.11.a Ensure that authorization for Docker client commands is enabled (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8582    8580  0 21:57 pts/0    00:00:00 grep dockerd
+	 root        5830       1  0 21:44 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false
+	 think       6426    6424  0 21:46 pts/0    00:00:00 grep dockerd
 	 
 [PASS] 2.11.b Ensure that authorization for Docker client commands is enabled (Scored)
 [FAIL] 2.12 Ensure centralized and remote logging is configured (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8588    8586  0 21:57 pts/0    00:00:00 grep dockerd
+	 root        5830       1  0 21:44 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false
+	 think       6432    6430  0 21:46 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.a Ensure live restore is Enabled (Scored)
-	 root        8286       1  5 21:57 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false --no-new-privileges=true
-	 think       8591    8589  0 21:57 pts/0    00:00:00 grep dockerd
+	 root        5830       1  0 21:44 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false
+	 think       6435    6433  0 21:46 pts/0    00:00:00 grep dockerd
 	 
 [FAIL] 2.13.b Ensure live restore is Enabled (Scored)
 [PASS] 2.14.a Ensure Userland Proxy is Disabled (Scored)
@@ -78,7 +78,10 @@
 	 
 	 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
 	 
-[PASS] 2.17.a Ensure containers are restricted from acquiring new privileges (Scored)
+[FAIL] 2.17.a Ensure containers are restricted from acquiring new privileges (Scored)
+	 root        5830       1  0 21:44 ?        00:00:00 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock --userland-proxy=false
+	 think       6475    6473  0 21:46 pts/0    00:00:00 grep dockerd
+	 
 [FAIL] 2.17.b Ensure containers are restricted from acquiring new privileges (Scored)
 [INFO] 3 Docker daemon configuration files
 [PASS] 3.1 Ensure that docker.service file ownership is set to root:root (Scored)
@@ -318,6 +321,9 @@ dockerd --userland-proxy=false
 
 2.16 
 permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/version": dial unix /var/run/docker.sock: connect: permission denied
+
+2.17.a You should run the Docker daemon as below:
+dockerd --no-new-privileges
 
 2.17.b For example, you should start your container as below:
 docker run --rm -it --security-opt=no-new-privileges ubuntu bash
@@ -674,7 +680,7 @@ application/json" -H "content-type: application/json" -d "{
 
 
 == Summary ==
-35 checks PASS
-36 checks FAIL
+34 checks PASS
+37 checks FAIL
 42 checks WARN
 10 checks INFO
