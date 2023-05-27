@@ -1,17 +1,14 @@
-# author: nick.reva@snap.com
-# created April 11, 2021
-enable_network_policy: true
-default_pod_security_policy_template_id: "restricted"
-
+# If you intened to deploy Kubernetes in an air-gapped environment,
+# please consult the documentation on how to configure custom RKE images.
 nodes:
-- address: 192.168.56.50
+- address: 192.168.56.51
   port: "22"
-  internal_address: 192.168.56.50
+  internal_address: 192.168.56.51
   role:
   - controlplane
-  - etcd
   - worker
-  hostname_override: node1
+  - etcd
+  hostname_override: localhost
   user: root
   docker_socket: /var/run/docker.sock
   ssh_key: ""
@@ -20,24 +17,8 @@ nodes:
   ssh_cert_path: ""
   labels: {}
   taints: []
-#- address: 192.168.50.102
-#  port: "22"
-#  internal_address: 192.168.50.102
-#  role:
-#  - worker
-#  hostname_override: node2
-#  user: root
-#  docker_socket: /var/run/docker.sock
-#  ssh_key: ""
-#  ssh_key_path: ~/.ssh/id_rsa
-#  ssh_cert: ""
-#  ssh_cert_path: ""
-#  labels: {}
-#  taints: []
 services:
   etcd:
-    uid: 52034
-    gid: 52034
     image: ""
     extra_args: {}
     extra_binds: []
@@ -57,14 +38,6 @@ services:
     creation: ""
     backup_config: null
   kube-api:
-    pod_security_policy: true
-    secrets_encryption_config:
-      enabled: true
-    audit_log:
-      enabled: true
-    admission_configuration:
-    event_rate_limit:
-      enabled: true
     image: ""
     extra_args: {}
     extra_binds: []
@@ -72,20 +45,24 @@ services:
     win_extra_args: {}
     win_extra_binds: []
     win_extra_env: []
-    service_cluster_ip_range: 10.43.0.0/16
+    service_cluster_ip_range: 10.46.0.0/16
     service_node_port_range: ""
+    pod_security_policy: false
     always_pull_images: false
+    secrets_encryption_config: null
+    audit_log: null
+    admission_configuration: null
+    event_rate_limit: null
   kube-controller:
     image: ""
-    extra_args:
-      feature-gates: "RotateKubeletServerCertificate=true"
+    extra_args: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
     win_extra_binds: []
     win_extra_env: []
-    cluster_cidr: 10.42.0.0/16
-    service_cluster_ip_range: 10.43.0.0/16
+    cluster_cidr: 10.45.0.0/16
+    service_cluster_ip_range: 10.46.0.0/16
   scheduler:
     image: ""
     extra_args: {}
@@ -95,11 +72,8 @@ services:
     win_extra_binds: []
     win_extra_env: []
   kubelet:
-    extra_args:
-      feature-gates: "RotateKubeletServerCertificate=true"
-      protect-kernel-defaults: "true"
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     image: ""
+    extra_args: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
@@ -107,9 +81,9 @@ services:
     win_extra_env: []
     cluster_domain: cluster.local
     infra_container_image: ""
-    cluster_dns_server: 10.43.0.10
+    cluster_dns_server: 10.46.0.10
     fail_swap_on: false
-    generate_serving_certificate: true
+    generate_serving_certificate: false
   kubeproxy:
     image: ""
     extra_args: {}

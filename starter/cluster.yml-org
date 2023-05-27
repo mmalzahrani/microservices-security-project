@@ -1,8 +1,5 @@
 # author: nick.reva@snap.com
 # created April 11, 2021
-enable_network_policy: true
-default_pod_security_policy_template_id: "restricted"
-
 nodes:
 - address: 192.168.56.50
   port: "22"
@@ -36,8 +33,6 @@ nodes:
 #  taints: []
 services:
   etcd:
-    uid: 52034
-    gid: 52034
     image: ""
     extra_args: {}
     extra_binds: []
@@ -57,14 +52,6 @@ services:
     creation: ""
     backup_config: null
   kube-api:
-    pod_security_policy: true
-    secrets_encryption_config:
-      enabled: true
-    audit_log:
-      enabled: true
-    admission_configuration:
-    event_rate_limit:
-      enabled: true
     image: ""
     extra_args: {}
     extra_binds: []
@@ -74,11 +61,15 @@ services:
     win_extra_env: []
     service_cluster_ip_range: 10.43.0.0/16
     service_node_port_range: ""
+    pod_security_policy: false
     always_pull_images: false
+    secrets_encryption_config: null
+    audit_log: null
+    admission_configuration: null
+    event_rate_limit: null
   kube-controller:
     image: ""
-    extra_args:
-      feature-gates: "RotateKubeletServerCertificate=true"
+    extra_args: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
@@ -95,11 +86,8 @@ services:
     win_extra_binds: []
     win_extra_env: []
   kubelet:
-    extra_args:
-      feature-gates: "RotateKubeletServerCertificate=true"
-      protect-kernel-defaults: "true"
-      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
     image: ""
+    extra_args: {}
     extra_binds: []
     extra_env: []
     win_extra_args: {}
@@ -109,7 +97,7 @@ services:
     infra_container_image: ""
     cluster_dns_server: 10.43.0.10
     fail_swap_on: false
-    generate_serving_certificate: true
+    generate_serving_certificate: false
   kubeproxy:
     image: ""
     extra_args: {}

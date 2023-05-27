@@ -1,0 +1,23 @@
+1. Incident commander name:
+Mohammed Mousa Alzahrani
+
+2. Executive Summary of what happened:
+Three unauthorized pods running three different crypto miners were launched.
+
+3. Summary of what was affected:
+System level, by consumes system resources.
+
+4. Summmry of the impact:
+The attacker was able to run crypto miners on our system, crypto-mining consumes a lot of CPU.
+
+5. Summary of the remediation steps:
+The administrator can run the following commands to remove the unauthorized pods:
+    kubectl --kubeconfig kube_config_cluster.yml delete pod cryptotonight --grace-period=0 --force
+    kubectl --kubeconfig kube_config_cluster.yml delete pod moneropool --grace-period=0 --force
+    kubectl --kubeconfig kube_config_cluster.yml delete pod minergate --grace-period=0 --force
+After that the administrator need to check the resources utilization should back to normal.
+
+6. Summary of lessons learned:
+- Implement Docker Content Trust (DCT) to make sure the required images can run only.
+- Raise up the event priority of crypto alert.
+- Review the ACL and RBAC and restrict the access to kube-apiserver
